@@ -66,57 +66,65 @@ while(dracofeu.hp > 0 || evoli.hp < 0) {
 
 
 class Pokemon {
-    constructor(name, attack, defense, hp, luck, isLucky){
+    constructor(name, attack, defense, pv, luck){
         this.name = name
         this.attack = attack
         this.defense = defense
-        this.hp = hp
+        this.pv = pv
         this.luck = luck
-        this.isLucky = isLucky
     }
  }
 
-let dracofeu = new Pokemon ("dracofeu", 70, 20, 200, 0.6, Math.random())
+/*let isLucky = Math.random()
+        console.log (isLucky)*/
+
+let dracofeu = new Pokemon ("dracofeu", 70, 20, 200, 0.4)
         console.log (dracofeu)
 
-let evoli = new Pokemon ("evoli", 50, 30, 150 ,0.5, Math.random())
+let evoli = new Pokemon ("evoli", 50, 30, 150 ,0.8)
         console.log (evoli)
 
 
-       
 
+while(dracofeu.pv > 0 || evoli.pv < 0) {
+    
+    let dracofeuIsLucky = Math.random()
+    console.log (dracofeu.name + " veut attaquer " + evoli.name + ".")
 
-while(dracofeu.hp > 0 || evoli.hp < 0) {
-
-    if (dracofeu.isLucky > dracofeu.luck){
+    if (dracofeuIsLucky < dracofeu.luck){
         attackPokemon = dracofeu.attack - evoli.defense
-        evoli.hp -= attackPokemon
-            console.log (evoli.name + " est attaqué par " + dracofeu.name + " et il lui inflige " + dracofeu.attack + " PV de dégâts.")
+        evoli.pv -= attackPokemon
+            console.log (evoli.name + " est attaqué par " + dracofeu.name + " et il lui inflige " + (dracofeu.attack - evoli.defense) + " PV de dégâts.")
+                if (evoli.pv > 0) {
+                    console.log (evoli.name + " a maintenant " + evoli.pv + " PV.")}
     }
     else {
         console.log(dracofeu.name + " a manqué son attaque...")
+        console.log(evoli.name + " a toujours " + evoli.pv + " PV.")
     }
-            if (evoli.hp < 0) {
-                console.log (evoli.name + " est mort...")
-                console.log (dracofeu.name + " a gagné !!")
+            if (evoli.pv < 0) {
+                console.log (evoli.name + " a 0 PV et meurt...")
+                console.log (dracofeu.name + " a gagné !! Il lui reste " + dracofeu.pv + " PV.")
                 break
-            } else {
-                console.log (evoli.name + " a maintenant " + evoli.hp + " PV.")
             }
 
-    if (evoli.isLucky > dracofeu.luck) {
+    let evoliIsLucky = Math.random()
+    console.log (evoli.name + " veut attaquer " + dracofeu.name + ".")
+
+    if (evoliIsLucky < evoli.luck) {
         attackPokemon = evoli.attack - dracofeu.defense
-        dracofeu.hp -= attackPokemon
-            console.log (dracofeu.name + " est attaqué par " + evoli.name + " et il lui inflige " + evoli.attack + " PV de dégâts.")
+        dracofeu.pv -= attackPokemon
+            console.log (dracofeu.name + " est attaqué par " + evoli.name + " et il lui inflige " + (evoli.attack - dracofeu.defense) + " PV de dégâts.")
+                if (dracofeu.pv > 0) {
+                    console.log (dracofeu.name + " a maintenant " + dracofeu.pv + " PV.")}
     }    
     else {
         console.log(evoli.name + " a manqué son attaque...")
+        console.log(dracofeu.name + " a toujours " + dracofeu.pv + " PV.")
     }
-            if (dracofeu.hp < 0) {
-                console.log (dracofeu.name + " est mort...")
-                console.log (evoli.name + " a gagné !!")
+            if (dracofeu.pv < 0) {
+                console.log (dracofeu.name + " a 0 PV et meurt...")
+                console.log (evoli.name + " a gagné !! Il lui reste " + evoli.pv + " PV.")
                 break
-            } else {
-                console.log (dracofeu.name + " a maintenant " + dracofeu.hp + "PV.")
             }
 }
