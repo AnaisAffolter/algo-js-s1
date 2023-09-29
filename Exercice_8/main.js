@@ -97,8 +97,7 @@ while(dracofeu.pv > 0 || evoli.pv < 0) {
             console.log (evoli.name + " est attaqué par " + dracofeu.name + " et il lui inflige " + (dracofeu.attack - evoli.defense) + " PV de dégâts.")
                 if (evoli.pv > 0) {
                     console.log (evoli.name + " a maintenant " + evoli.pv + " PV.")}
-    }
-    else {
+    } else {
         console.log(dracofeu.name + " a manqué son attaque...")
         console.log(evoli.name + " a toujours " + evoli.pv + " PV.")
     }
@@ -117,8 +116,7 @@ while(dracofeu.pv > 0 || evoli.pv < 0) {
             console.log (dracofeu.name + " est attaqué par " + evoli.name + " et il lui inflige " + (evoli.attack - dracofeu.defense) + " PV de dégâts.")
                 if (dracofeu.pv > 0) {
                     console.log (dracofeu.name + " a maintenant " + dracofeu.pv + " PV.")}
-    }    
-    else {
+    } else {
         console.log(evoli.name + " a manqué son attaque...")
         console.log(dracofeu.name + " a toujours " + dracofeu.pv + " PV.")
     }
